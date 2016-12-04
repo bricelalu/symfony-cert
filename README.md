@@ -1,6 +1,8 @@
 symfony-cert
 ============
 
+Date Exam: 20/11/2017
+
 A Symfony project created on November 20, 2016, 6:42 pm with the purpose to help
 mastering the 16 themes of the certification program.
 
@@ -9,7 +11,7 @@ As a TDD developer I want to write code only when I have some test that failed.
 
 Each Bundle Could Represent One of 16 themes of the certification program
 
-**PHP et Sécurité Web**
+**ID-1 PHP et Sécurité Web**
 •	API de PHP 5.3 à PHP 5.6
 •	Programmation orientée objet
 •	Espaces de nommage
@@ -22,7 +24,7 @@ Each Bundle Could Represent One of 16 themes of the certification program
 •	SPL
 •	Sécurité Web (XSS, CSRF, etc.)
 
-**•	HTTP**
+**ID-2•	HTTP**
 •	Interactions Client / Server
 •	Codes de statut
 •	Requête HTTP
@@ -33,7 +35,7 @@ Each Bundle Could Represent One of 16 themes of the certification program
 •	Négociation de contenu
 •	Détection de la langue du client
 
-**•	Architecture de Symfony**
+**ID-3•	Architecture de Symfony**
 •	Édition Standard de Symfony
 •	Licence
 •	Composants
@@ -49,7 +51,7 @@ Each Bundle Could Represent One of 16 themes of the certification program
 •	Promesse de rétrocompatibilité
 •	Gestion du code obsolète
 
-**Standardisation**
+**ID-4 Standardisation**
 •	Feuille de route et versions
 •	Interopérabilité des frameworks et PSRs
 •	Conventions de nommage
@@ -60,7 +62,7 @@ Each Bundle Could Represent One of 16 themes of the certification program
 •	Surcharger le framework
 •	Versioning sémantique
 
-**•	Bundles**
+**ID-5	Bundles**
 •	Conventions de nommage
 •	Organisation du code
 •	Contrôleurs
@@ -71,7 +73,7 @@ Each Bundle Could Represent One of 16 themes of the certification program
 •	Propagation et écoute d'événements du noyau
 •	Configuration sémantique et passes de compilation
 
-**•	Contrôleurs**
+**ID-6•	Contrôleurs**
 •	Conventions de nommage
 •	La classe Controller de Symfony
 •	La requête
@@ -86,7 +88,7 @@ Each Bundle Could Represent One of 16 themes of the certification program
 •	Contrôleurs internes de Symfony
 
 
-**•	Routage**
+**ID-7•	Routage**
 •	Configuration (YAML, XML, PHP et annotations)
 •	Contraindre les paramètres des URLs
 •	Appliquer des valeurs par défaut aux paramètres d'URL
@@ -99,7 +101,7 @@ Each Bundle Could Represent One of 16 themes of the certification program
 •	Detection de la locale du client
 •	Déboguer le routeur et les routes
 
-**•	Templating avec Twig**
+**ID-8•	Templating avec Twig**
 •	Échappement automatique
 •	Héritage de template
 •	Les variables globales
@@ -113,7 +115,7 @@ Each Bundle Could Represent One of 16 themes of the certification program
 •	Gestion des ressources web
 •	Déboguer les variables de vue
 
-**•	Formulaires**
+**ID-9•	Formulaires**
 •	Création de formulaires
 •	Traitement des formulaires
 •	Types de champs natifs
@@ -125,9 +127,8 @@ Each Bundle Could Represent One of 16 themes of the certification program
 •	Convertisseurs de données
 •	Événement internes des formulaires
 •	Extensions de types de formulaires
-
 
-**•	Validation de données**
+**ID-10•	Validation de données**
 •	Validation d'objet PHP
 •	Contraintes de validation natives
 •	Portée des contraintes de validation
@@ -136,7 +137,7 @@ Each Bundle Could Represent One of 16 themes of the certification program
 •	Validateurs de rappel personnalisés
 •	Constructeur de violations
 
-**•	Injection de dépendance**
+**ID-11•	Injection de dépendance**
 •	Conteneur de services
 •	Services par défaut de Symfony
 •	Paramètres de configuration globaux
@@ -147,7 +148,7 @@ Each Bundle Could Represent One of 16 themes of the certification program
 •	Passes de compilation
 •	Configuration automatique des services
 
-**•	Sécurité**
+**ID-12•	Sécurité**
 •	Authentification
 •	Autorisation
 •	La configuration
@@ -160,7 +161,7 @@ Each Bundle Could Represent One of 16 themes of the certification program
 •	Authentification via « Guard »
 •	Voteurs et stratégies de vote
 
-**•	Cache HTTP**
+**ID-13•	Cache HTTP**
 •	Types de cache (clients, proxies et reverse proxies)
 •	Expiration (Expires, Cache-Control)
 •	Validation (ETag, Last-Modified)
@@ -168,7 +169,12 @@ Each Bundle Could Represent One of 16 themes of the certification program
 •	Cache côté serveur
 •	Edge Side Includes
 
-**•	Console**
+Success Criteria:
+I have learned Cache HTTP:
+- When I can list every cache parameter and explain ``the difference between all of them
+- When I can write the code for cache invalidation & expiration
+
+**ID-14•	Console**
 •	Commandes natives de Symfony
 •	Commandes personnalisées
 •	La configuration
@@ -178,7 +184,7 @@ Each Bundle Could Represent One of 16 themes of the certification program
 •	Événements internes de la console
 •	Niveaux de verbosité de la sortie
 
-**•	Tests Automatisés**
+**ID-15•	Tests Automatisés**
 •	Tests unitaires avec PHPUnit
 •	Tests fonctionnels avec PHPUnit
 •	Client
@@ -190,7 +196,7 @@ Each Bundle Could Represent One of 16 themes of the certification program
 •	Bridge PHPUnit
 •	Gestion des avertissements d'obsolescence
 
-**•	Divers**
+**ID-16•	Divers**
 •	Gestion et résolution des erreurs
 •	Déboguer le code
 •	Bonnes pratiques de déploiement
