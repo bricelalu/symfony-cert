@@ -1,9 +1,10 @@
 <?php
 
-namespace AppBundle\Controller;
+namespace SfDoctrineBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use SfDoctrineBundle\Entity\Genus;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -11,13 +12,35 @@ use Symfony\Component\HttpFoundation\Response;
 class GenusController extends Controller
 {
     /**
+     * @Route("/genus/new")
+     */
+    public function newAction()
+    {
+        $genus = new Genus();
+        $genus->setName('Octopus'.rand(1, 100));
+        $em = $this->get('doctrine')->getManager('sfdoctrine');
+        $em->persist($genus);
+        $em->flush();
+        return new Response('Genus Created');
+    }
+
+    /**
      * @Route("/genus/{genusName}")
      */
     public function showAction($genusName)
     {
         $funFact = "Octopuses can change the color of their body in just *three-tenths* of a second!";
-        $funFact = $this->container->get('markdown.parser')
-            ->transform($funFact);
+        $cache = $this->get('doctrine_cache.providers.my_markdown_cache');
+
+        $key = md5($funFact);
+        if ($cache->contains($key)) {
+            $funFact = $cache->fetch($key);
+        } else {
+            sleep(1); // fake how slow this could be
+            $funFact = $this->get('markdown.parser')
+                ->transform($funFact);
+            $cache->save($key, $funFact);
+        }
         return $this->render('genus/show.html.twig', array(
             'name' => $genusName,
             'funFact' => $funFact

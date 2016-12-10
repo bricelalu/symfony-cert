@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <a href="{{ path('movies_list') }}">Back To List</a>
+    <h1>New Terminator Movie</h1>
+    <h3>{{ quote|upper }}</h3>
+    {{ include('movie/_form.html.twig') }}
+    <p>
+        Today is :{{ 'now'|date('Y-m-d') }}
+    </p>
+{% endblock %}
