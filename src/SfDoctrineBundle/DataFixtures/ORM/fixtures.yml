@@ -1,0 +1,9 @@
+SfDoctrineBundle\Entity\Genus:
+  genus_{1..5000}:
+    name: <genus()>
+    subFamily: <text(20)>
+    speciesCount: <numberBetween(100, 9999)>
+    funFact: <sentence()>
+    isPublished: <boolean(75)>
+
+

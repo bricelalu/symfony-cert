@@ -18,18 +18,44 @@ class GenusController extends Controller
     {
         $genus = new Genus();
         $genus->setName('Octopus'.rand(1, 100));
+        $genus->setSubFamily('Octopadine');
+        $genus->setSpeciesCount(rand(100, 999999));
+
         $em = $this->get('doctrine')->getManager('sfdoctrine');
         $em->persist($genus);
         $em->flush();
-        return new Response('Genus Created');
+        return new Response('<html><body>Genus Created</body></html>');
     }
 
     /**
-     * @Route("/genus/{genusName}")
+     * @Route("/genus")
+     */
+    public function listAction()
+    {
+        $em = $this->get('doctrine.orm.sfdoctrine_entity_manager');
+        $genuses = $em->getRepository('SfDoctrineBundle:Genus')
+        ->findAllPublishedOrderedBySize();
+
+        return $this->render('genus/list.html.twig', [
+            'genuses' => $genuses
+        ]);
+
+    }
+
+    /**
+     * @Route("/genus/{genusName}", name="genus_show")
      */
     public function showAction($genusName)
     {
-        $funFact = "Octopuses can change the color of their body in just *three-tenths* of a second!";
+        $em = $this->get('doctrine.orm.sfdoctrine_entity_manager');
+        $genus = $em->getRepository('SfDoctrineBundle:Genus')
+            ->findOneBy(['name' => $genusName]);
+
+        if (!$genus) {
+            throw $this->createNotFoundException('Genus Not Found');
+        }
+
+        /*
         $cache = $this->get('doctrine_cache.providers.my_markdown_cache');
 
         $key = md5($funFact);
@@ -40,10 +66,10 @@ class GenusController extends Controller
             $funFact = $this->get('markdown.parser')
                 ->transform($funFact);
             $cache->save($key, $funFact);
-        }
+        }*/
+        $this->get('logger')->info('Showing genus: '.$genusName);
         return $this->render('genus/show.html.twig', array(
-            'name' => $genusName,
-            'funFact' => $funFact
+            'genus' => $genus,
         ));
     }
 

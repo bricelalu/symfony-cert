@@ -2,6 +2,10 @@ app:
     resource: "@AppBundle/Controller/"
     type:     annotation
 
+sfdoctrine:
+    resource: "@SfDoctrineBundle/Controller/"
+    type:     annotation
+
 homepage:
     path: "/homepage"
     defaults:
