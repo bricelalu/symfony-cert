@@ -12,7 +12,8 @@ services:
     class: SfDoctrineBundle\Twig\MarkdownExtension
     tags:
       - { name: twig.extension }
-    arguments: ['@sfdoctrine.markdown_transformer']
+    #arguments: ['@sfdoctrine.markdown_transformer']
+    autowire: true
 
   quote_generator:
     class: AppBundle\Service\QuoteGenerator
