@@ -4,6 +4,16 @@ parameters:
 #    parameter_name: value
 
 services:
+  sfdoctrine.markdown_transformer:
+    class: SfDoctrineBundle\Service\MarkdownTransformer
+    arguments: ['@markdown.parser', '@doctrine_cache.providers.my_markdown_cache']
+
+  sfdoctrine.markdown_extension:
+    class: SfDoctrineBundle\Twig\MarkdownExtension
+    tags:
+      - { name: twig.extension }
+    arguments: ['@sfdoctrine.markdown_transformer']
+
   quote_generator:
     class: AppBundle\Service\QuoteGenerator
     arguments: ["@logger"]

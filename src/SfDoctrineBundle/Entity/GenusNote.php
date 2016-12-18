@@ -3,10 +3,11 @@
 
 namespace SfDoctrineBundle\Entity;
 
+use SfDoctrineBundle\Entity\Genus;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="SfDoctrineBundle\Repository\GenusNoteRepository")
  * @ORM\Table(name="genus_note")
  */
 class GenusNote
@@ -37,6 +38,29 @@ class GenusNote
      * @ORM\Column(type="datetime")
      */
     private $createdAt;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Genus", inversedBy="notes")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $genus;
+
+
+    /**
+     * @return Genus
+     */
+    public function getGenus()
+    {
+        return $this->genus;
+    }
+
+    /**
+     * @param Genus $genus
+     */
+    public function setGenus(Genus $genus)
+    {
+        $this->genus = $genus;
+    }
 
     /**
      * @return mixed
