@@ -4,6 +4,7 @@ namespace SfDoctrineBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="SfDoctrineBundle\Repository\GenusRepository")
@@ -21,16 +22,20 @@ class Genus
 
     /**
      * @ORM\Column(type="string")
+     * @Assert\NotBlank()
      */
     private $name;
 
     /**
+     * @Assert\NotBlank()
      * @ORM\ManyToOne(targetEntity="SfDoctrineBundle\Entity\SubFamily")
      * @ORM\JoinColumn(nullable=false)
      */
     private $subFamily;
 
     /**
+     * @Assert\NotBlank()
+     * @Assert\Range(min=0, minMessage="Negative species! Come on...")
      * @ORM\Column(type="integer")
      */
     private $speciesCount;
@@ -50,6 +55,28 @@ class Genus
      * @ORM\OrderBy({"createdAt"="DESC"})
      */
     private $notes;
+
+    /**
+     * @ORM\Column(type="date")
+     * @Assert\NotBlank()
+     */
+    private $firstDiscoveredAt;
+
+    /**
+     * @return mixed
+     */
+    public function getFirstDiscoveredAt()
+    {
+        return $this->firstDiscoveredAt;
+    }
+
+    /**
+     * @param mixed $firstDiscoveredAt
+     */
+    public function setFirstDiscoveredAt($firstDiscoveredAt)
+    {
+        $this->firstDiscoveredAt = $firstDiscoveredAt;
+    }
 
     public function __construct()
     {
